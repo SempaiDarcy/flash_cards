@@ -6,7 +6,7 @@ export type ButtonProps<T extends ElementType = 'button'> = {
   colorIcon?: string
   fullWidth?: boolean
   icon?: IconType
-  variant?: 'primary' | 'secondary'
+  variant?: 'link' | 'primary' | 'secondary' | 'tertiary'
 } & ComponentPropsWithoutRef<T>
 
 import { IconType } from 'react-icons'

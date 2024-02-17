@@ -76,15 +76,26 @@ export const AsLink: Story = {
   args: {
     as: 'a',
     children: 'Button As Link',
-    variant: 'primary',
+    disabled: false,
+    variant: 'link',
   },
 }
 
-export const AsLinkWithIcon: Story = {
+export const Tertiary: Story = {
   args: {
-    as: 'a',
-    children: 'Button As Link',
+    as: 'button',
+    children: 'Tertiary Button',
+    disabled: false,
+    variant: 'tertiary',
+  },
+}
+
+export const TertiaryWithIcon: Story = {
+  args: {
+    as: 'button',
+    children: 'Tertiary Button',
+    disabled: false,
     icon: FiLogOut,
-    variant: 'primary',
+    variant: 'tertiary',
   },
 }
