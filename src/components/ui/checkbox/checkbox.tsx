@@ -1,39 +1,43 @@
-import { ReactNode } from 'react'
+import { ComponentPropsWithoutRef } from 'react'
 
-import * as RadixCheckbox from '@radix-ui/react-checkbox'
+import * as Checkbox from '@radix-ui/react-checkbox'
 import { IoMdCheckmark } from 'react-icons/io'
 
 import s from './checkbox.module.scss'
+
 export type CheckboxProps = {
-  checked: RadixCheckbox.CheckedState
-  children?: ReactNode
+  checked?: boolean
   className?: string
-  disabled?: boolean | undefined
-  id?: string
-  onChange: (checked: RadixCheckbox.CheckedState) => void
-}
-export const Checkbox = ({ checked, children, className, disabled, onChange }: CheckboxProps) => {
+  disabled?: boolean
+  label?: string
+  onCheckedHandler?: (checked: boolean) => void
+} & ComponentPropsWithoutRef<typeof Checkbox.Root>
+
+export const CheckboxComponent = ({
+  checked = false,
+  className,
+  disabled,
+  label,
+  onCheckedHandler,
+}: CheckboxProps) => {
   return (
-    <form>
-      <div className={`${s.checkboxContainer} ${className}`}>
-        <RadixCheckbox.Root
+    <div className={`${s.wrapper} ${className}`}>
+      <div className={`${s.checkboxWrapper} ${disabled ? s.disabled : ''}`}>
+        <Checkbox.Root
           checked={checked}
-          className={s.checkboxRoot}
+          className={s.checkbox}
           disabled={disabled}
           id={'c1'}
-          onCheckedChange={onChange}
+          onCheckedChange={onCheckedHandler}
         >
-          <RadixCheckbox.Indicator className={s.checkboxIndicator}>
+          <Checkbox.Indicator className={s.checkboxIndicator}>
             <IoMdCheckmark className={s.checkboxIcon} />
-          </RadixCheckbox.Indicator>
-        </RadixCheckbox.Root>
-        <label
-          className={`${s.checkboxLabel} ${disabled ? s.checkboxLabelDisabled : ''}`}
-          htmlFor={'c1'}
-        >
-          {children}
-        </label>
+          </Checkbox.Indicator>
+        </Checkbox.Root>
       </div>
-    </form>
+      <label className={s.label} htmlFor={'c1'}>
+        {label}
+      </label>
+    </div>
   )
 }

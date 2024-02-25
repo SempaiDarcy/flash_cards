@@ -2,73 +2,57 @@ import type { Meta, StoryObj } from '@storybook/react'
 
 import { useState } from 'react'
 
-import * as RadixCheckbox from '@radix-ui/react-checkbox'
-
-import { Checkbox } from './checkbox'
+import { CheckboxComponent } from '@/components/ui/checkbox/checkbox'
 
 const meta = {
-  component: Checkbox,
+  component: CheckboxComponent,
   tags: ['autodocs'],
   title: 'Components/Checkbox',
-} satisfies Meta<typeof Checkbox>
+} satisfies Meta<typeof CheckboxComponent>
 
 export default meta
+
 type Story = StoryObj<typeof meta>
 
-export const Checked: Story = {
+export const CheckboxStory: Story = {
+  args: {},
+  render: args => {
+    const [checkedValue, setCheckedValue] = useState(false)
+
+    return (
+      <>
+        <CheckboxComponent
+          {...args}
+          checked={checkedValue}
+          onCheckedHandler={() => setCheckedValue(!checkedValue)}
+        />
+      </>
+    )
+  },
+}
+
+export const CheckboxStoryDisabled: Story = {
   args: {
     checked: true,
-  },
-  render: () => {
-    const [checked, setChecked] = useState<RadixCheckbox.CheckedState>(true)
-
-    return (
-      <Checkbox checked={checked} onChange={() => setChecked(!checked)}>
-        Checked
-      </Checkbox>
-    )
-  },
-}
-export const Unchecked: Story = {
-  args: {
-    checked: false,
-  },
-  render: () => {
-    const [checked, setChecked] = useState<RadixCheckbox.CheckedState>(false)
-
-    return (
-      <Checkbox checked={checked} onChange={() => setChecked(!checked)}>
-        Unchecked
-      </Checkbox>
-    )
+    disabled: true,
   },
 }
 
-export const CheckedDisabled: Story = {
+export const CheckboxStoryWithLabel: Story = {
   args: {
-    checked: true,
+    label: 'Checkbox',
   },
-  render: () => {
-    const [checked, setChecked] = useState<RadixCheckbox.CheckedState>(true)
+  render: args => {
+    const [checkedValue, setCheckedValue] = useState(false)
 
     return (
-      <Checkbox checked={checked} disabled onChange={() => setChecked(!checked)}>
-        Checked
-      </Checkbox>
-    )
-  },
-}
-export const UncheckedDisabled: Story = {
-  args: {
-    checked: false,
-  },
-  render: () => {
-    const [checked, setChecked] = useState<RadixCheckbox.CheckedState>(false)
-
-    return (
-      <Checkbox checked={checked} disabled onChange={() => setChecked(!checked)}>
-        Unchecked
-      </Checkbox>
+      <>
+        <CheckboxComponent
+          {...args}
+          checked={checkedValue}
+          onCheckedHandler={() => setCheckedValue(!checkedValue)}
+        />
+      </>
     )
   },
 }
