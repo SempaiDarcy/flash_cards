@@ -11,7 +11,7 @@ import { FaEye, FaEyeSlash, FaMagnifyingGlass, FaXmark } from 'react-icons/fa6'
 
 import s from './text-field.module.scss'
 
-type TextFieldProps = {
+export type TextFieldProps = {
   className?: string
   disabled?: boolean
   errorMessage?: string
