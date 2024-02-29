@@ -10,7 +10,7 @@ import {
 
 import { clsx } from 'clsx'
 
-// import s from './typography.module.scss'
+import s from './typography.module.scss'
 
 type OwnProps<T extends ElementType> = {
   as?: T
@@ -28,14 +28,7 @@ export const TypographyRender = <T extends ElementType = 'p'>(
   const Component = as || elementsMap[variant]
 
   return (
-    <Component
-      className={clsx(
-        className
-        // [s.variant]
-      )}
-      ref={ref}
-      {...props}
-    >
+    <Component className={clsx(className, s[variant])} ref={ref} {...props}>
       {children}
     </Component>
   )
