@@ -1,6 +1,7 @@
 label.label {
   color: var(--color-dark-100);
 }
+
 .inputWrapper {
   position: relative;
   height: 2.25rem;
@@ -15,8 +16,10 @@ label.label {
     right: 10px;
 
     margin-right: 5px;
+
     color: var(--color-dark-100);
   }
+
   .searchIcon {
     all: unset;
 
@@ -30,6 +33,7 @@ label.label {
 
     color: var(--color-dark-100);
   }
+
   input {
     all: unset;
 
@@ -48,6 +52,7 @@ label.label {
       padding-left: 40px;
     }
   }
+
   .default {
     color: var(--color-light-100);
 
@@ -81,6 +86,7 @@ label.label {
       }
     }
   }
+
   .error {
     color: var(--color-danger-300);
     border: 1px solid var(--color-danger-300);
@@ -96,4 +102,27 @@ label.label {
   font-size: 0.75rem;
   line-height: 1.5rem;
   color: var(--color-danger-300);
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus input:-webkit-autofill,
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover textarea:-webkit-autofill:focus,
+select:-webkit-autofill,
+select:-webkit-autofill:hover,
+select:-webkit-autofill:focus {
+  background: linear-gradient(
+    top,
+    rgb(255 255 255 / 0%) 0%,
+    rgb(0 174 255 / 4%) 50%,
+    rgb(255 255 255 / 0%) 51%,
+    rgb(0 174 255 / 3%) 100%
+  );
+  border: 0;
+  box-shadow: 0 0 0 1000px transparent inset;
+
+  transition: background-color 5000s ease-in-out 0s;
+
+  -webkit-text-fill-color: var(--color-light-100);
 }
