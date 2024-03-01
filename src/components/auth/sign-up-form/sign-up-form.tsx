@@ -8,25 +8,31 @@ import { DevTool } from '@hookform/devtools'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { z } from 'zod'
 
-import s from './sign-in-form.module.scss'
+import s from './sign-up-form.module.scss'
 
 import { Button } from '../../ui/button'
 
-type LoginFormSchema = z.infer<typeof loginSchema>
+type LoginFormSchema = z.infer<typeof SignUpSchema>
 
-const loginSchema = z.object({
-  email: z.string().email(),
-  password: z.string().min(3),
-  rememberMe: z.boolean().default(false),
-})
+const SignUpSchema = z
+  .object({
+    confirmPassword: z.string().min(3),
+    email: z.string().email(),
+    password: z.string().min(3),
+    rememberMe: z.boolean().default(false),
+  })
+  .refine(data => data.password === data.confirmPassword, {
+    message: "Passwords don't match",
+    path: ['confirmPassword'],
+  })
 
-export const SignInForm = () => {
+export const SignUpForm = () => {
   const {
     control,
     formState: { errors },
     handleSubmit,
   } = useForm<LoginFormSchema>({
-    resolver: zodResolver(loginSchema),
+    resolver: zodResolver(SignUpSchema),
   })
 
   const onSubmit = (data: LoginFormSchema) => {
@@ -36,7 +42,7 @@ export const SignInForm = () => {
   return (
     <Card className={s.formContainer}>
       <Typography className={s.header} variant={'large'}>
-        Sign In
+        Sign Up
       </Typography>
       <form className={s.form} onSubmit={handleSubmit(onSubmit)}>
         <DevTool control={control} />
@@ -51,15 +57,22 @@ export const SignInForm = () => {
           errorMessage={errors.password?.message}
           label={'Password'}
           name={'password'}
+          type={'password'}
+        />
+        <ControlledInput
+          control={control}
+          errorMessage={errors.confirmPassword?.message}
+          label={'Confirm Password'}
+          name={'confirmPassword'}
+          type={'password'}
         />
         <ControlledCheckbox control={control} label={'remember me'} name={'rememberMe'} />
-        <Typography className={s.forgotPass}>Forgot Password?</Typography>
         <Button type={'submit'}>Submit</Button>
         <Typography className={s.haveAccount} variant={'link1'}>
-          Don&apos;t have an account?
+          Already have an account?
         </Typography>
-        <Typography className={s.signUp} variant={'link1'}>
-          Sign Up
+        <Typography className={s.signIn} variant={'link1'}>
+          Sign In
         </Typography>
       </form>
     </Card>
