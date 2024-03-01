@@ -12,7 +12,7 @@ import s from './sign-up-form.module.scss'
 
 import { Button } from '../../ui/button'
 
-type LoginFormSchema = z.infer<typeof SignUpSchema>
+type SignUpFormSchema = z.infer<typeof SignUpSchema>
 
 const SignUpSchema = z
   .object({
@@ -31,11 +31,11 @@ export const SignUpForm = () => {
     control,
     formState: { errors },
     handleSubmit,
-  } = useForm<LoginFormSchema>({
+  } = useForm<SignUpFormSchema>({
     resolver: zodResolver(SignUpSchema),
   })
 
-  const onSubmit = (data: LoginFormSchema) => {
+  const onSubmit = (data: SignUpFormSchema) => {
     console.log(data)
   }
 

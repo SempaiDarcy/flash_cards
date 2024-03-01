@@ -12,9 +12,9 @@ import s from './sign-in-form.module.scss'
 
 import { Button } from '../../ui/button'
 
-type LoginFormSchema = z.infer<typeof loginSchema>
+type SignInFormSchema = z.infer<typeof SignInSchema>
 
-const loginSchema = z.object({
+const SignInSchema = z.object({
   email: z.string().email(),
   password: z.string().min(3),
   rememberMe: z.boolean().default(false),
@@ -25,11 +25,11 @@ export const SignInForm = () => {
     control,
     formState: { errors },
     handleSubmit,
-  } = useForm<LoginFormSchema>({
-    resolver: zodResolver(loginSchema),
+  } = useForm<SignInFormSchema>({
+    resolver: zodResolver(SignInSchema),
   })
 
-  const onSubmit = (data: LoginFormSchema) => {
+  const onSubmit = (data: SignInFormSchema) => {
     console.log(data)
   }
 
