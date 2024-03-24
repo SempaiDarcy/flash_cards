@@ -13,7 +13,7 @@ type Item = {
   value: string
 }
 
-type RadioGroupProps = {
+export type RadioGroupProps = {
   callback?: (value: string) => void
   disabled?: boolean
   items: Item[]
