@@ -51,6 +51,7 @@ export const SignInForm = () => {
           errorMessage={errors.password?.message}
           label={'Password'}
           name={'password'}
+          type={'password'}
         />
         <ControlledCheckbox control={control} label={'remember me'} name={'rememberMe'} />
         <Typography className={s.forgotPass}>Forgot Password?</Typography>
