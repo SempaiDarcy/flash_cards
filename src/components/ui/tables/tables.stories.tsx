@@ -1,50 +1,87 @@
-import type { Meta, StoryObj } from '@storybook/react'
+import type { Meta } from '@storybook/react'
 
-import { useState } from 'react'
+import { CSSProperties, useMemo, useState } from 'react'
 
-import { Tables } from '@/components/ui/tables/tables'
+import { DeleteIcon } from '@/assets/icon-components/delete-icon'
+import { EditIcon } from '@/assets/icon-components/edit-icon'
+import { PlayCircleIcon } from '@/assets/icon-components/play-circle-icon'
+import { IconButton } from '@/components/ui/icon-button/icon-button'
+import { Table } from '@/components/ui/tables/table'
+import { TableHeader } from '@/components/ui/tables/table-header/table-header'
+import { Typography } from '@/components/ui/typography/typography'
 
 const meta = {
-  component: Tables,
+  component: Table.Root,
   tags: ['autodocs'],
-  title: 'Components/Tables',
-} satisfies Meta<typeof Tables>
+  title: 'Components/Table',
+} satisfies Meta<typeof Table.Root>
 
 export default meta
-type Story = StoryObj<typeof meta>
+// type Story = StoryObj<typeof meta>
 
 const data = [
   {
-    cardsCount: 10,
-    createdBy: 'John Doe',
-    title: 'Project A',
-    updated: '2023-07-07',
+    cardsCount: 100,
+    createdBy: 'Putin',
+    title: 'Card 1',
+    updated: '2024-05-04',
   },
   {
     cardsCount: 5,
-    createdBy: 'Jane Smith',
-    title: 'Project B',
-    updated: '2023-07-06',
+    createdBy: 'Obama',
+    title: 'Card 2',
+    updated: '2024-05-04',
   },
   {
-    cardsCount: 8,
-    createdBy: 'Alice Johnson',
-    title: 'Project C',
-    updated: '2023-07-05',
+    cardsCount: 180,
+    createdBy: 'Van Damm',
+    title: 'Card 3',
+    updated: '2024-05-04',
   },
   {
-    cardsCount: 3,
-    createdBy: 'Bob Anderson',
-    title: 'Project D',
-    updated: '2023-07-07',
+    cardsCount: 800,
+    createdBy: 'Mike Tyson',
+    title: 'Card 4',
+    updated: '2024-05-04',
   },
   {
     cardsCount: 12,
-    createdBy: 'Emma Davis',
-    title: 'Project E',
-    updated: '2023-07-04',
+    createdBy: 'Sponge Bob',
+    title: 'Card 5',
+    updated: '2024-05-04',
   },
 ]
+
+const columnsPrimitives: Column[] = [
+  {
+    key: 'name',
+    title: 'Name',
+  },
+  {
+    key: 'cardsCount',
+    title: 'Cards',
+  },
+  {
+    key: 'updated',
+    title: 'Last Updated',
+  },
+  {
+    key: 'created',
+    title: 'Created by',
+  },
+]
+
+const columns: Column[] = [
+  ...columnsPrimitives,
+  {
+    key: 'icons',
+    title: '',
+  },
+]
+
+const columnsSortable: Column[] = columns.map(column =>
+  column.key !== 'icons' ? { ...column, sortable: true } : column
+)
 
 type Sort = {
   direction: 'asc' | 'desc'
@@ -55,70 +92,56 @@ type Column = {
   key: string
   title: string
 }
-export const WithSort: Story = {
-  render: () => {
-    const [sort, setSort] = useState<Sort>(null)
-    const columns: Column[] = [
-      {
-        key: 'name',
-        title: 'Name',
-      },
-      {
-        key: 'cardsCount',
-        title: 'Cards',
-      },
-      {
-        key: 'updated',
-        title: 'Last Updated',
-      },
-      {
-        key: 'createdBy',
-        title: 'Created by',
-      },
-    ]
 
-    const handleSort = (key: string) => {
-      if (sort && sort.key === key) {
-        setSort({
-          direction: sort.direction === 'asc' ? 'desc' : 'asc',
-          key,
-        })
-      } else {
-        setSort({
-          direction: 'asc',
-          key,
-        })
-      }
+export const Sortable = () => {
+  const [sort, setSort] = useState<Sort>(null)
+
+  const sortedString = useMemo(() => {
+    if (!sort) {
+      return null
     }
 
-    console.log(sort)
+    return `${sort.key}-${sort.direction}`
+  }, [sort])
 
-    return (
-      <table>
-        <thead>
-          <tr>
-            {columns.map(column => (
-              <th key={column.key} onClick={() => handleSort(column.key)}>
-                {column.title}
-                {sort && sort.key === column.key && (
-                  <span>{sort.direction === 'asc' ? '▲' : '▼'}</span>
-                )}
-              </th>
-            ))}
-          </tr>
-        </thead>
-        <tbody>
-          {data.map(item => (
-            <tr key={item.title}>
-              <td>{item.title}</td>
-              <td>{item.cardsCount}</td>
-              <td>{item.updated}</td>
-              <td>{item.createdBy}</td>
-              <td>icons...</td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
-    )
-  },
+  console.log(sortedString)
+
+  const iconsCell: CSSProperties = {
+    alignItems: 'center',
+    display: 'flex',
+    gap: '1rem',
+    height: '3.6rem',
+  }
+
+  return (
+    <Table.Root>
+      <TableHeader columns={columnsSortable} onSort={setSort} sort={sort} />
+      <Table.Body>
+        {data.map(item => (
+          <Table.Row key={item.title}>
+            <Table.Cell>
+              <Typography variant={'body2'}>{item.title}</Typography>
+            </Table.Cell>
+            <Table.Cell>
+              <Typography variant={'body2'}>{item.cardsCount}</Typography>
+            </Table.Cell>
+            <Table.Cell>
+              <Typography variant={'body2'}>{item.updated}</Typography>
+            </Table.Cell>
+            <Table.Cell>
+              <Typography variant={'body2'}>{item.createdBy}</Typography>
+            </Table.Cell>
+            <Table.Cell style={iconsCell}>
+              <IconButton icon={<PlayCircleIcon />} size={1.3} />
+              <IconButton icon={<EditIcon />} size={1.3} />
+              <IconButton icon={<DeleteIcon />} size={1.3} />
+              {/*<PlayCircleIcon width={'1.2rem'} />*/}
+              {/*<EditIcon width={'1.2rem'} />*/}
+              {/*<DeleteIcon width={'1.2rem'} />*/}
+            </Table.Cell>
+          </Table.Row>
+        ))}
+      </Table.Body>
+    </Table.Root>
+  )
 }
