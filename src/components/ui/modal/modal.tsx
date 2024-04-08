@@ -1,6 +1,6 @@
 import { ReactNode } from 'react'
 
-import { Typography } from '@/components/ui/typography/typography'
+import { Typography } from '@/components'
 import * as Dialog from '@radix-ui/react-dialog'
 import { AnimatePresence, motion } from 'framer-motion'
 import { RxCross2 } from 'react-icons/rx'

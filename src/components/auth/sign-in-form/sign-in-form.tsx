@@ -1,16 +1,11 @@
 import { useForm } from 'react-hook-form'
 
-import { Card } from '@/components/ui/card/card'
-import { ControlledCheckbox } from '@/components/ui/controlled/controlled-checkbox/controlled-checkbox'
-import { ControlledInput } from '@/components/ui/controlled/controlled-input/controlled-input'
-import { Typography } from '@/components/ui/typography/typography'
+import { Button, Card, ControlledCheckbox, ControlledInput, Typography } from '@/components'
 import { DevTool } from '@hookform/devtools'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { z } from 'zod'
 
 import s from './sign-in-form.module.scss'
-
-import { Button } from '../../ui/button'
 
 type SignInFormSchema = z.infer<typeof SignInSchema>
 

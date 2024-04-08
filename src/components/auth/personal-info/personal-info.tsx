@@ -1,20 +1,15 @@
 import { ChangeEvent, useRef, useState } from 'react'
 import { useForm } from 'react-hook-form'
 
-import { PencilIcon } from '@/assets/icon-components/pencil-icon'
-import { Avatar } from '@/components/ui/avatar/avatar'
-import { Button } from '@/components/ui/button'
-import { Card } from '@/components/ui/card/card'
-import { TextField } from '@/components/ui/text-field/text-field'
-import { Typography } from '@/components/ui/typography/typography'
+import { PencilIcon } from '@/assets'
+import profile from '@/assets/img/profile.png'
+import { Avatar, Button, Card, TextField, Typography } from '@/components'
 import { DevTool } from '@hookform/devtools'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { FiLogOut } from 'react-icons/fi'
 import { z } from 'zod'
 
 import s from './personal-info.module.scss'
-
-import profileIcon from '../../../assets/img/profileIcon.png'
 
 type PersonalInfoProps = {
   avatar?: string
@@ -34,7 +29,7 @@ const PersonalInfoSchema = z.object({
 })
 
 export const PersonalInfo = ({
-  avatar = profileIcon,
+  avatar = profile,
   email,
   name,
   onChangeAvatar,

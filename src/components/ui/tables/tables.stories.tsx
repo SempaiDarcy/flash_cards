@@ -2,13 +2,8 @@ import type { Meta } from '@storybook/react'
 
 import { CSSProperties, useMemo, useState } from 'react'
 
-import { DeleteIcon } from '@/assets/icon-components/delete-icon'
-import { EditIcon } from '@/assets/icon-components/edit-icon'
-import { PlayCircleIcon } from '@/assets/icon-components/play-circle-icon'
-import { IconButton } from '@/components/ui/icon-button/icon-button'
-import { Table } from '@/components/ui/tables/table'
-import { TableHeader } from '@/components/ui/tables/table-header/table-header'
-import { Typography } from '@/components/ui/typography/typography'
+import { DeleteIcon, EditIcon, PlayCircleIcon } from '@/assets'
+import { IconButton, Table, TableHeader, Typography } from '@/components'
 
 const meta = {
   component: Table.Root,
@@ -135,9 +130,6 @@ export const Sortable = () => {
               <IconButton icon={<PlayCircleIcon />} size={1.3} />
               <IconButton icon={<EditIcon />} size={1.3} />
               <IconButton icon={<DeleteIcon />} size={1.3} />
-              {/*<PlayCircleIcon width={'1.2rem'} />*/}
-              {/*<EditIcon width={'1.2rem'} />*/}
-              {/*<DeleteIcon width={'1.2rem'} />*/}
             </Table.Cell>
           </Table.Row>
         ))}

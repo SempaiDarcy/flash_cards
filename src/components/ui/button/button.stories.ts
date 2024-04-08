@@ -1,8 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react'
 
+import { Button } from '@/components'
 import { FiLogOut } from 'react-icons/fi'
-
-import { Button } from './'
 
 const meta = {
   argTypes: {

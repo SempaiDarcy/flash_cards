@@ -1,9 +1,6 @@
 import { useForm } from 'react-hook-form'
 
-import { Button } from '@/components/ui/button'
-import { Card } from '@/components/ui/card/card'
-import { ControlledInput } from '@/components/ui/controlled/controlled-input/controlled-input'
-import { Typography } from '@/components/ui/typography/typography'
+import { Button, Card, ControlledInput, Typography } from '@/components'
 import { DevTool } from '@hookform/devtools'
 import { zodResolver } from '@hookform/resolvers/zod'
 import z from 'zod'

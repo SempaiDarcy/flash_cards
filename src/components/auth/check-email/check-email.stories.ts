@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react'
 
-import { CheckEmail } from '@/components/auth/check-email/check-email'
+import { CheckEmail } from '@/components'
 const meta = {
   component: CheckEmail,
   tags: ['autodocs'],

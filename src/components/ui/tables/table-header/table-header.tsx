@@ -1,8 +1,7 @@
 import { ComponentPropsWithoutRef, ElementRef, forwardRef } from 'react'
 
-import { ArrowDownIcon } from '@/assets/icon-components/arrow-down-icon'
-import { ArrowUpIcon } from '@/assets/icon-components/arrow-up-icon'
-import { Typography } from '@/components/ui/typography/typography'
+import { ArrowDownIcon, ArrowUpIcon } from '@/assets'
+import { Typography } from '@/components'
 import { clsx } from 'clsx'
 
 import s from './table-header.module.scss'

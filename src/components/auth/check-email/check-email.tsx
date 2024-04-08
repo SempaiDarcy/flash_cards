@@ -1,7 +1,5 @@
-import { EmailIcon } from '@/assets/icon-components/email-icon'
-import { Button } from '@/components/ui/button'
-import { Card } from '@/components/ui/card/card'
-import { Typography } from '@/components/ui/typography/typography'
+import { EmailIcon } from '@/assets'
+import { Button, Card, Typography } from '@/components'
 
 import s from './check-email.module.scss'
 export const CheckEmail = () => {

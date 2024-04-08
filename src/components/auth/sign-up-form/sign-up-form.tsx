@@ -1,6 +1,6 @@
 import { useForm } from 'react-hook-form'
 
-import { Card } from '@/components/ui/card/card'
+import { Card } from '@/components/ui/card'
 import { ControlledCheckbox } from '@/components/ui/controlled/controlled-checkbox/controlled-checkbox'
 import { ControlledInput } from '@/components/ui/controlled/controlled-input/controlled-input'
 import { Typography } from '@/components/ui/typography/typography'

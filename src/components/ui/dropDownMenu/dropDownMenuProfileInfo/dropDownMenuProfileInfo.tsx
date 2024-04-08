@@ -1,5 +1,5 @@
-import { ProfileIcon } from '@/components/ui/dropDownMenu/profileIcon/profileIcon'
-import { Typography } from '@/components/ui/typography/typography'
+import { ProfileIcon } from '@/components'
+import { Typography } from '@/components'
 
 import s from './dropDownMenuProfileInfo.module.scss'
 export type PopoverProfileInfoProps = {
