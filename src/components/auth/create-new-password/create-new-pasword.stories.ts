@@ -1,4 +1,4 @@
-import { CreateNewPassword } from '@/components/auth/create-new-password/create-new-password'
+import { CreateNewPassword } from '@/components'
 import { StoryObj } from '@storybook/react'
 
 const meta = {

@@ -1,17 +1,14 @@
 import type { Meta, StoryObj } from '@storybook/react'
 
-import userPhotoUrl from '@/assets/img/profileIcon.png'
-import { Button } from '@/components/ui/button'
-import { DropDownMenu } from '@/components/ui/dropDownMenu/dropDownMenu'
-import { DropDownMenuProfileInfo } from '@/components/ui/dropDownMenu/dropDownMenuProfileInfo/dropDownMenuProfileInfo'
-import { ProfileIcon } from '@/components/ui/dropDownMenu/profileIcon/profileIcon'
+import userPhotoUrl from '@/assets/img/profile.png'
+import { Button, DropDownMenu, DropDownMenuProfileInfo, ProfileIcon } from '@/components'
 import { BiEditAlt } from 'react-icons/bi'
 import { FiLogOut } from 'react-icons/fi'
 import { HiOutlineUser } from 'react-icons/hi'
 import { LuPlayCircle } from 'react-icons/lu'
 import { MdOutlineDelete } from 'react-icons/md'
 
-import s from '@/components/ui/dropDownMenu/dropDownMenu.module.scss'
+import s from './dropDownMenu.module.scss'
 
 const meta = {
   component: DropDownMenu,

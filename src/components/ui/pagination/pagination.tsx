@@ -1,9 +1,8 @@
+import { usePagination } from '@/components'
 import { Select } from '@/components/ui/select/select'
 import { IoChevronBackOutline, IoChevronForward } from 'react-icons/io5'
 
 import s from './pagination.module.scss'
-
-import { usePagination } from './usePagination'
 
 type PaginationConditionals =
   | {

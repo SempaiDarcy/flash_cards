@@ -1,6 +1,6 @@
 import { ComponentPropsWithoutRef, ElementRef, forwardRef } from 'react'
 
-import { Typography } from '@/components/ui/typography/typography'
+import { Typography } from '@/components'
 import * as RadixRadioGroup from '@radix-ui/react-radio-group'
 
 import s from './radioGroup.module.scss'

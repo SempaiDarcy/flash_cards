@@ -1,6 +1,6 @@
 import { ComponentPropsWithoutRef, ElementRef, ReactNode, forwardRef } from 'react'
 
-import { Typography } from '@/components/ui/typography/typography'
+import { Typography } from '@/components'
 import * as SelectRadix from '@radix-ui/react-select'
 import { HiOutlineChevronDown } from 'react-icons/hi'
 

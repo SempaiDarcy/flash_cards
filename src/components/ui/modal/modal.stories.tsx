@@ -2,10 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react'
 
 import { useState } from 'react'
 
-import { Button } from '@/components/ui/button'
-import { Modal } from '@/components/ui/modal/modal'
-import { Select } from '@/components/ui/select/select'
-import { TextField } from '@/components/ui/text-field/text-field'
+import { Button, Modal, Select, TextField } from '@/components'
 
 const meta = {
   argTypes: {},

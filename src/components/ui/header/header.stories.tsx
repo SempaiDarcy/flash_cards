@@ -1,10 +1,9 @@
 import type { Meta, StoryObj } from '@storybook/react'
 
-import headerLogo from '@/assets/img/Logo.svg'
-import userPhotoUrl from '@/assets/img/profileIcon.png'
-import { Button } from '@/components/ui/button'
+import headerLogo from '@/assets/img/logo.svg'
+import userPhotoUrl from '@/assets/img/profile.png'
+import { Button, Header } from '@/components'
 
-import { Header } from './header'
 const meta = {
   component: Header,
   tags: ['autodocs'],
