@@ -1,7 +1,7 @@
 import { useState } from 'react'
 
 import { Button, Table, Typography } from '@/components'
-import { useCreateNewDeckMutation, useGetDecksQuery } from '@/services/base-api'
+import { useCreateNewDeckMutation, useGetDecksQuery } from '@/services/decks.service'
 
 export const Decks = () => {
   const [currentPage, setCurrentPage] = useState<number>(1)
