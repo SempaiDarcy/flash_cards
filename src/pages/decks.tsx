@@ -1,10 +1,15 @@
-import { Link } from 'react-router-dom'
+import { useState } from 'react'
 
 import { Button, Table, Typography } from '@/components'
-import { useGetDecksQuery } from '@/services/base-api'
+import { useCreateNewDeckMutation, useGetDecksQuery } from '@/services/decks.service'
 
 export const Decks = () => {
-  const { data, error, isLoading, refetch } = useGetDecksQuery()
+  const [currentPage, setCurrentPage] = useState<number>(1)
+
+  const { data, error, isLoading, refetch } = useGetDecksQuery({ currentPage, itemsPerPage: 10 })
+  const [createDeck, deckCreationStatus] = useCreateNewDeckMutation()
+
+  console.log(deckCreationStatus)
 
   if (error) {
     return (
@@ -21,7 +26,8 @@ export const Decks = () => {
   return (
     <div>
       <Button onClick={refetch}>Refetch</Button>
-      <Link to={'/decks2'}>Decks2 </Link>
+      <Button onClick={() => createDeck({ name: 'New Deck' })}>Create New Deck</Button>
+      <h2>current page: {data?.pagination?.currentPage}</h2>
       <Table.Root>
         <Table.Head>
           <Table.Row>
@@ -44,6 +50,16 @@ export const Decks = () => {
           })}
         </Table.Body>
       </Table.Root>
+      {createArray(1, data?.pagination?.totalPages ?? 0).map((el, index) => {
+        return (
+          <Button key={index} onClick={() => setCurrentPage(el)}>
+            {el}
+          </Button>
+        )
+      })}
     </div>
   )
+}
+function createArray(startNumber: number, length: number) {
+  return Array.from({ length }, (_, index) => startNumber + index)
 }
