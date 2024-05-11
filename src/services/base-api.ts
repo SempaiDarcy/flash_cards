@@ -14,10 +14,10 @@ export const baseApi = createApi({
       headers.append('x-auth-skip', 'true')
     },
   }),
-
   endpoints: builder => {
     return {
       createNewDeck: builder.mutation<void, CreateDeckArgs>({
+        invalidatesTags: ['Decks'],
         query: arg => {
           return {
             body: arg,
@@ -35,6 +35,7 @@ export const baseApi = createApi({
         },
       }),
       getDecks: builder.query<GetDecksResponse, GetDecksArgs | void>({
+        providesTags: ['Decks'],
         query: args => {
           return {
             params: args ?? {},
@@ -44,7 +45,9 @@ export const baseApi = createApi({
       }),
     }
   },
+
   reducerPath: 'cardsApi',
+  tagTypes: ['Decks'],
 })
 
 export const { useCreateNewDeckMutation, useGetDecksQuery } = baseApi
