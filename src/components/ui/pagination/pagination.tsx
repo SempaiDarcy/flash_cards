@@ -18,7 +18,7 @@ type PaginationConditionals =
 
 export type PaginationProps = {
   className?: string
-  count: number
+  count: number | undefined
   onChange: (page: number) => void
   onPerPageChange?: (itemPerPage: number) => void
   page: number
