@@ -1,6 +1,6 @@
 import { useState } from 'react'
 
-import { Pagination } from '@/components'
+import { Pagination, Typography } from '@/components'
 import { DecksTable } from '@/features'
 import { useCreateNewDeckMutation, useGetDecksQuery } from '@/services/decks.service'
 
@@ -11,14 +11,26 @@ export const DecksPage = () => {
 
   console.log(deckCreationStatus)
 
+  if (error) {
+    return (
+      <>
+        <Typography variant={'h1'}>An error has occured...</Typography>
+        <Typography variant={'h1'}>{JSON.stringify(error)}</Typography>
+      </>
+    )
+  }
+  if (isLoading) {
+    return <Typography variant={'h1'}>Loading...</Typography>
+  }
+
   return (
-    <div>
-      <DecksTable createDeck={createDeck} data={data} error={error} isLoading={isLoading} />
+    <>
+      <DecksTable createDeck={createDeck} data={data} />
       <Pagination
         count={data?.pagination?.totalPages}
         onChange={setCurrentPage}
         page={currentPage}
       />
-    </div>
+    </>
   )
 }

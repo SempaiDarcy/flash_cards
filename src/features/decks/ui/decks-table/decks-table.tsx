@@ -1,24 +1,10 @@
-import { Button, Table, Typography } from '@/components'
+import { Button, Table } from '@/components'
 import { GetDecksResponse } from '@/services/flashcards.types'
 type DecksTableProps = {
   createDeck: any
   data: GetDecksResponse | undefined
-  error: any
-  isLoading: boolean
 }
-export const DecksTable = ({ createDeck, data, error, isLoading }: DecksTableProps) => {
-  if (error) {
-    return (
-      <>
-        <Typography variant={'h1'}>An error has occured...</Typography>
-        <Typography variant={'h1'}>{JSON.stringify(error)}</Typography>
-      </>
-    )
-  }
-  if (isLoading) {
-    return <Typography variant={'h1'}>Loading</Typography>
-  }
-
+export const DecksTable = ({ createDeck, data }: DecksTableProps) => {
   return (
     <div>
       <Button onClick={() => createDeck({ name: 'New Deck' })}>Create New Deck</Button>
@@ -45,11 +31,6 @@ export const DecksTable = ({ createDeck, data, error, isLoading }: DecksTablePro
           })}
         </Table.Body>
       </Table.Root>
-      {/*<Pagination*/}
-      {/*  count={data?.pagination?.totalPages}*/}
-      {/*  onChange={setCurrentPage}*/}
-      {/*  page={setCurrentPage}*/}
-      {/*/>*/}
     </div>
   )
 }
