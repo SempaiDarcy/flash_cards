@@ -1,16 +1,12 @@
-import { useState } from 'react'
-
-import { Button, Pagination, Table, Typography } from '@/components'
-import { useCreateNewDeckMutation, useGetDecksQuery } from '@/services/decks.service'
-
-export const DecksTable = () => {
-  const [currentPage, setCurrentPage] = useState<number>(1)
-
-  const { data, error, isLoading, refetch } = useGetDecksQuery({ currentPage, itemsPerPage: 10 })
-  const [createDeck, deckCreationStatus] = useCreateNewDeckMutation()
-
-  console.log(deckCreationStatus)
-
+import { Button, Table, Typography } from '@/components'
+import { GetDecksResponse } from '@/services/flashcards.types'
+type DecksTableProps = {
+  createDeck: any
+  data: GetDecksResponse | undefined
+  error: any
+  isLoading: boolean
+}
+export const DecksTable = ({ createDeck, data, error, isLoading }: DecksTableProps) => {
   if (error) {
     return (
       <>
@@ -25,7 +21,6 @@ export const DecksTable = () => {
 
   return (
     <div>
-      <Button onClick={refetch}>Refetch</Button>
       <Button onClick={() => createDeck({ name: 'New Deck' })}>Create New Deck</Button>
       <h2>current page: {data?.pagination?.currentPage}</h2>
       <Table.Root>
@@ -50,21 +45,11 @@ export const DecksTable = () => {
           })}
         </Table.Body>
       </Table.Root>
-      <Pagination
-        count={data?.pagination?.totalPages}
-        onChange={setCurrentPage}
-        page={currentPage}
-      />
-      {/*{createArray(1, data?.pagination?.totalPages ?? 0).map((el, index) => {*/}
-      {/*  return (*/}
-      {/*    <Button key={index} onClick={() => setCurrentPage(el)}>*/}
-      {/*      {el}*/}
-      {/*    </Button>*/}
-      {/*  )*/}
-      {/*})}*/}
+      {/*<Pagination*/}
+      {/*  count={data?.pagination?.totalPages}*/}
+      {/*  onChange={setCurrentPage}*/}
+      {/*  page={setCurrentPage}*/}
+      {/*/>*/}
     </div>
   )
 }
-// function createArray(startNumber: number, length: number) {
-//   return Array.from({ length }, (_, index) => startNumber + index)
-// }
