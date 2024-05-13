@@ -1,13 +1,11 @@
-import { Button, Table } from '@/components'
+import { Table } from '@/components'
 import { GetDecksResponse } from '@/services/flashcards.types'
 type DecksTableProps = {
-  createDeck: any
   data: GetDecksResponse | undefined
 }
-export const DecksTable = ({ createDeck, data }: DecksTableProps) => {
+export const DecksTable = ({ data }: DecksTableProps) => {
   return (
     <div>
-      <Button onClick={() => createDeck({ name: 'New Deck' })}>Create New Deck</Button>
       <h2>current page: {data?.pagination?.currentPage}</h2>
       <Table.Root>
         <Table.Head>
