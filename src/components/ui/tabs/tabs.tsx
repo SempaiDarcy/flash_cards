@@ -1,45 +1,25 @@
-import { ComponentPropsWithoutRef } from 'react'
+import { ComponentPropsWithoutRef, ElementRef, ReactNode, forwardRef } from 'react'
 
+import { Typography } from '@/components'
 import * as RadixTabs from '@radix-ui/react-tabs'
 
 import s from './tabs.module.scss'
-
-type TabType = {
-  label: string
-  value: string
-}
-
-type TabsProps = {
-  disabled?: boolean
-  tabs: TabType[]
+export type TabsProps = {
+  children: ReactNode
+  label?: string
 } & ComponentPropsWithoutRef<typeof RadixTabs.Root>
 
-const Tabs = ({ children, disabled, onValueChange, tabs }: TabsProps) => {
-  const changeValueHandler = (value: string) => {
-    onValueChange?.(value)
+export const Tabs = forwardRef<ElementRef<typeof RadixTabs.Root>, TabsProps>(
+  ({ children, label, ...restProps }, ref) => {
+    return (
+      <RadixTabs.Root className={s.root} ref={ref} {...restProps}>
+        {label && (
+          <Typography as={'label'} variant={'body2'}>
+            {label}
+          </Typography>
+        )}
+        <RadixTabs.List loop>{children}</RadixTabs.List>
+      </RadixTabs.Root>
+    )
   }
-
-  return (
-    <RadixTabs.Root
-      className={s.tabsRoot}
-      defaultValue={tabs[0].value}
-      onValueChange={changeValueHandler}
-    >
-      <RadixTabs.List className={s.tabsList}>
-        {tabs.map((tab, index) => (
-          <RadixTabs.Trigger
-            className={s.tabsTrigger}
-            disabled={disabled}
-            key={index}
-            value={disabled ? '' : tab.value}
-          >
-            {tab.label}
-          </RadixTabs.Trigger>
-        ))}
-      </RadixTabs.List>
-      {children}
-    </RadixTabs.Root>
-  )
-}
-
-export default Tabs
+)

@@ -1,12 +1,10 @@
 import type { Meta, StoryObj } from '@storybook/react'
 
-import { TabContent } from '@/components/ui/tabs/tabContent/tabContent'
-import Tabs from '@/components/ui/tabs/tabs'
+import { useState } from 'react'
+
+import { TabItem, Tabs, TabsProps } from '@/components'
 
 const meta = {
-  argTypes: {
-    disabled: { control: 'boolean' },
-  },
   component: Tabs,
   tags: ['autodocs'],
   title: 'Components/Tabs',
@@ -16,44 +14,33 @@ export default meta
 
 type Story = StoryObj<typeof meta>
 
-const tabs = [
-  {
-    label: 'Switcher',
-    value: 'tab1',
-  },
-  {
-    label: 'Switcher',
-    value: 'tab2',
-  },
-  {
-    label: 'Switcher',
-    value: 'tab3',
-  },
-]
+const StorybookTabs = (args: TabsProps) => {
+  const [activeTab, setActiveTab] = useState(args.value)
 
-export const TabsDefault: Story = {
+  const changeActiveTab = (tabValue: string) => {
+    setActiveTab(tabValue)
+  }
+
+  return (
+    <Tabs onValueChange={changeActiveTab} value={activeTab}>
+      {args.children}
+    </Tabs>
+  )
+}
+
+export const ControlledTabs: Story = {
   args: {
     children: (
       <>
-        <TabContent value={'tab1'}>
-          <p>Content 1</p>
-        </TabContent>
-        <TabContent value={'tab2'}>
-          <p>Content 2</p>
-        </TabContent>
-        <TabContent value={'tab3'}>
-          <p>Content 3</p>
-        </TabContent>
+        <TabItem value={'1'}>Switcher 1</TabItem>
+        <TabItem value={'2'}>Switcher 2</TabItem>
+        <TabItem disabled value={'3'}>
+          Switcher 3
+        </TabItem>
       </>
     ),
-    disabled: false,
-    tabs,
+    label: 'Tabs',
+    value: '1',
   },
-}
-
-export const TabsDisabled: Story = {
-  args: {
-    disabled: true,
-    tabs,
-  },
+  render: ({ children, ...restArgs }) => <StorybookTabs {...restArgs}>{children}</StorybookTabs>,
 }

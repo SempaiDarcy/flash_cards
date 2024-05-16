@@ -1,9 +1,9 @@
 import { useState } from 'react'
 
-import { Panel, TextField } from '@/components'
+import { Panel, PanelPropsType } from '@/components'
 import { Meta, StoryObj } from '@storybook/react'
 
-const meta: Meta = {
+const meta: Meta<typeof Panel> = {
   component: Panel,
   tags: ['autodocs'],
   title: 'Components/Panel',
@@ -14,23 +14,35 @@ export default meta
 type Story = StoryObj<typeof meta>
 
 export const Default: Story = {
-  args: {},
-  render: props => <PanelWithHook {...props} />,
+  args: {
+    inputValue: '',
+    label: 'Show decks cards',
+    maxSliderValue: 20,
+    minSliderValue: 1,
+    sliderLabel: 'Number of cards',
+    sliderValue: [5, 15],
+    value: 'allCards',
+  },
+  render: args => <PanelWithHook {...args} />,
 }
 
-const PanelWithHook = (args: any) => {
+const PanelWithHook = (args: PanelPropsType) => {
   const [inputValue, setValue] = useState<string>(args.inputValue)
+  const [tabValue, setTabValue] = useState<string>(args.value)
+  const [sliderValue, setSliderValue] = useState(args.sliderValue)
 
   return (
-    <div>
-      <TextField
-        onChange={e => setValue(e.currentTarget.value)}
-        onClearClick={() => setValue('')}
-        placeholder={'Input with search'}
-        type={'search'}
-        value={inputValue}
-      />
-      {/*<Tabs tabs={} />*/}
-    </div>
+    <Panel
+      inputValue={inputValue}
+      label={args.label}
+      maxSliderValue={args.maxSliderValue}
+      minSliderValue={args.minSliderValue}
+      onChangeInputValue={setValue}
+      onChangeSliderValue={setSliderValue}
+      onChangeTabValue={setTabValue}
+      sliderLabel={args.sliderLabel}
+      sliderValue={sliderValue}
+      value={tabValue}
+    />
   )
 }
