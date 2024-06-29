@@ -2,12 +2,12 @@
   display: flex;
   flex-direction: column;
 
-  width: 26.25rem;
+  width: 42rem;
   margin: 2.25rem auto 0;
   padding: 2.062rem 2.25rem 2.562rem;
 
   .title {
-    margin-bottom: 1.5rem;
+    margin-bottom: 2.7rem;
     text-align: center;
   }
 
@@ -19,13 +19,13 @@
   }
 
   .avatar {
-    width: 6rem;
+    width: 9.6rem;
     object-fit: cover;
     border-radius: 50%;
   }
 
   .name {
-    font-size: 1.2rem;
+    font-size: 2rem;
     text-align: center;
   }
 
@@ -36,7 +36,6 @@
 
     .editNameWrapper {
       display: flex;
-      gap: 0.3rem;
       align-items: center;
       align-self: center;
       justify-content: center;
@@ -66,7 +65,7 @@
 
       position: absolute;
       z-index: 2;
-      top: -2.3rem;
+      top: -3rem;
       left: 55%;
 
       display: -webkit-box;
@@ -74,8 +73,8 @@
       align-items: center;
       justify-content: center;
 
-      width: 1.5rem;
-      height: 1.5rem;
+      width: 2.4rem;
+      height: 2.4rem;
       margin: 0 auto;
 
       background: var(--color-dark-300);
@@ -93,6 +92,7 @@
 
   .input {
     width: 100%;
+    padding-bottom: 3.6rem;
   }
 
   .errorMessage {

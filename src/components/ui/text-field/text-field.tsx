@@ -69,7 +69,7 @@ const TextFieldInner: ForwardRefRenderFunction<HTMLInputElement, TextFieldProps>
       <div className={s.inputWrapper}>
         {type === 'search' ? (
           <div className={s.searchIcon}>
-            <FaMagnifyingGlass />
+            <FaMagnifyingGlass className={s.icon} />
           </div>
         ) : null}
 
@@ -79,13 +79,13 @@ const TextFieldInner: ForwardRefRenderFunction<HTMLInputElement, TextFieldProps>
             onClick={() => setShowPassword(!showPassword)}
             type={'button'}
           >
-            {showPassword ? <FaEye /> : <FaEyeSlash />}
+            {showPassword ? <FaEye className={s.icon} /> : <FaEyeSlash className={s.icon} />}
           </button>
         )}
 
         {type === 'search' && value && (
           <button className={s.inputIcon} onClick={cleanTextHandler} type={'button'}>
-            <FaXmark />
+            <FaXmark className={s.icon} />
           </button>
         )}
 

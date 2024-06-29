@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react'
 
-import headerLogo from '@/assets/img/logo.svg'
+import { Logo } from '@/assets/icon-components/logo'
 import userPhotoUrl from '@/assets/img/profile.png'
 import { Button, Header } from '@/components'
 
@@ -23,13 +23,11 @@ const headerStyle = {
   width: '100%',
 }
 
-const logoStyle = { height: '36px', width: '156.48px' }
-
 export const LogIn: Story = {
   render: () => {
     return (
       <Header style={headerStyle}>
-        <img alt={'Logo'} src={headerLogo} style={logoStyle} />
+        <Logo />
         <Button>Sign In</Button>
       </Header>
     )
@@ -40,7 +38,7 @@ export const LogOut: Story = {
   render: () => {
     return (
       <Header style={headerStyle}>
-        <img alt={'Logo'} src={headerLogo} style={logoStyle} />
+        <Logo />
         <div style={{ alignItems: 'center', display: 'flex' }}>
           <span
             style={{
@@ -65,5 +63,3 @@ export const LogOut: Story = {
     )
   },
 }
-
-// <Button>Sign In</Button>

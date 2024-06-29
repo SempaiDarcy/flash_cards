@@ -1,6 +1,6 @@
 import { useForm } from 'react-hook-form'
 
-import { Card } from '@/components/ui/card'
+import { Button, Card } from '@/components'
 import { ControlledCheckbox } from '@/components/ui/controlled/controlled-checkbox/controlled-checkbox'
 import { ControlledInput } from '@/components/ui/controlled/controlled-input/controlled-input'
 import { Typography } from '@/components/ui/typography/typography'
@@ -9,8 +9,6 @@ import { zodResolver } from '@hookform/resolvers/zod'
 import { z } from 'zod'
 
 import s from './sign-up-form.module.scss'
-
-import { Button } from '../../ui/button'
 
 type SignUpFormSchema = z.infer<typeof SignUpSchema>
 
@@ -68,7 +66,7 @@ export const SignUpForm = () => {
         />
         <ControlledCheckbox control={control} label={'remember me'} name={'rememberMe'} />
         <Button type={'submit'}>Submit</Button>
-        <Typography className={s.haveAccount} variant={'link1'}>
+        <Typography className={s.haveAccount} variant={'body2'}>
           Already have an account?
         </Typography>
         <Typography className={s.signIn} variant={'link1'}>
