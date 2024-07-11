@@ -3,12 +3,13 @@ import type { Meta, StoryObj } from '@storybook/react'
 import userPhotoUrl from '@/assets/img/profile.png'
 import { Button, DropDownMenu, DropDownMenuProfileInfo, ProfileIcon } from '@/components'
 import { BiEditAlt } from 'react-icons/bi'
+import { CiMenuKebab } from 'react-icons/ci'
 import { FiLogOut } from 'react-icons/fi'
 import { HiOutlineUser } from 'react-icons/hi'
 import { LuPlayCircle } from 'react-icons/lu'
 import { MdOutlineDelete } from 'react-icons/md'
 
-import s from './dropDownMenu.module.scss'
+import s from './drop-down-menu.module.scss'
 
 const meta = {
   component: DropDownMenu,
@@ -47,7 +48,11 @@ export const WithProfile: Story = {
 
 export const Usual: Story = {
   args: {
-    trigger: <button></button>,
+    trigger: (
+      <div style={{ cursor: 'pointer', fontSize: '2.4rem' }}>
+        <CiMenuKebab />
+      </div>
+    ),
   },
   render: ({ trigger }) => {
     return (

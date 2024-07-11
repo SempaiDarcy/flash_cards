@@ -2,7 +2,7 @@ import { ReactNode } from 'react'
 
 import * as RadixPopover from '@radix-ui/react-popover'
 
-import s from './dropDownMenu.module.scss'
+import s from './drop-down-menu.module.scss'
 
 export type PopoverProps = {
   children?: ReactNode

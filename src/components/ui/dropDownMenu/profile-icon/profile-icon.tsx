@@ -1,6 +1,6 @@
 import { forwardRef } from 'react'
 
-import s from './profileIcon.module.scss'
+import s from './profile-icon.module.scss'
 
 export type ProfileIconProps = {
   className?: string

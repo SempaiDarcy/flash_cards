@@ -1,7 +1,6 @@
-import { ProfileIcon } from '@/components'
-import { Typography } from '@/components'
+import { ProfileIcon, Typography } from '@/components'
 
-import s from './dropDownMenuProfileInfo.module.scss'
+import s from './drop-down-menu-profile-info.module.scss'
 export type PopoverProfileInfoProps = {
   userEmail?: string
   userName?: string
@@ -27,5 +26,3 @@ export const DropDownMenuProfileInfo = ({
     </div>
   )
 }
-
-export default DropDownMenuProfileInfo
