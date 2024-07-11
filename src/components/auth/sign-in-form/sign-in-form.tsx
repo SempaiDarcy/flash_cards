@@ -48,7 +48,7 @@ export const SignInForm = () => {
           name={'password'}
           type={'password'}
         />
-        <ControlledCheckbox control={control} label={'remember me'} name={'rememberMe'} />
+        <ControlledCheckbox control={control} label={'Remember me'} name={'rememberMe'} />
         <Typography className={s.forgotPass}>Forgot Password?</Typography>
         <Button type={'submit'}>Submit</Button>
         <Typography className={s.haveAccount} variant={'link1'}>

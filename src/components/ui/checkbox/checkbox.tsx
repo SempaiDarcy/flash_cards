@@ -31,7 +31,7 @@ export const CheckboxComponent = ({
           onCheckedChange={onCheckedHandler}
         >
           <Checkbox.Indicator className={s.checkboxIndicator}>
-            <IoMdCheckmark className={s.checkboxIcon} />
+            <IoMdCheckmark className={s.checkIcon} />
           </Checkbox.Indicator>
         </Checkbox.Root>
       </div>
