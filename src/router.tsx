@@ -7,6 +7,7 @@ import {
 } from 'react-router-dom'
 
 import { DecksPage } from '@/pages'
+
 const publicRoutes: RouteObject[] = [
   {
     element: <div>Login</div>,
