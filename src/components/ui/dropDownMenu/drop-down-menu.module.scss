@@ -42,8 +42,6 @@
   align-items: center;
   justify-content: flex-start;
 
-  padding: 8px;
-
   font-size: var(--font-size-xs);
   font-weight: var(--font-weight-regular);
   line-height: var(--line-height-s);
@@ -82,9 +80,10 @@
   }
 }
 
-.buttonWrapper {
-  margin: 0;
-  padding-top: 0.8rem;
+.button {
+  width: 3.6rem;
+  height: 3.6rem;
+  padding-bottom: 1rem;
 }
 
 .action-menu {

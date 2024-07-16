@@ -23,15 +23,17 @@ export type HeaderProps = {
 } & ComponentPropsWithoutRef<'div'>
 
 export const Header = forwardRef<ElementRef<'div'>, HeaderProps>(
-  ({ avatar = userPhotoUrl, email, isLoggedIn, name }, ref) => {
+  ({ avatar = userPhotoUrl, email = 'j&johnson@gmail.com', isLoggedIn, name = 'Ivan' }, ref) => {
     return (
       <header className={s.headerBody} ref={ref}>
-        <Logo />
+        <Logo className={s.headerLogo} />
         {isLoggedIn ? (
           <>
             <div className={s.userProfile}>
               <div>
-                <Typography className={s.userName}>{name}</Typography>
+                <Typography className={s.userName} variant={'h1'}>
+                  {name}
+                </Typography>
               </div>
               <DropDownMenu trigger={<ProfileIcon userPhotoUrl={avatar} />}>
                 <DropDownMenuProfileInfo

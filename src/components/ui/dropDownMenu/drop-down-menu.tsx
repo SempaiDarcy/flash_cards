@@ -15,7 +15,7 @@ export const DropDownMenu = ({ children, trigger }: PopoverProps) => {
   return (
     <RadixPopover.Root>
       <RadixPopover.Trigger asChild>
-        <button className={s.buttonWrapper}>{trigger}</button>
+        <button className={s.button}>{trigger}</button>
       </RadixPopover.Trigger>
       <RadixPopover.Portal>
         <RadixPopover.Content className={s.popoverContent} sideOffset={10}>

@@ -2,6 +2,7 @@
   display: flex;
   gap: 8px;
   align-items: center;
+
   padding: 6px 6px 12px;
 }
 
@@ -12,14 +13,14 @@
 
 .userNameTitle {
   margin: 0;
-  font-size: var(--font-size-s);
+  font-size: var(--font-size-l);
   line-height: var(--line-height-m);
   color: var(--color-light-100);
 }
 
 .userEmailTitle {
   margin: 0;
-  font-size: var(--font-size-xs);
+  font-size: var(--font-size-m);
   line-height: var(--line-height-s);
   color: var(--color-dark-100);
 }
