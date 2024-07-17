@@ -9,6 +9,7 @@ import {
   ProfileIcon,
   Typography,
 } from '@/components'
+import { DropDownItem } from '@/components/ui/drop-down-menu/drop-down-item/drop-down-item'
 import { FiLogOut } from 'react-icons/fi'
 import { HiOutlineUser } from 'react-icons/hi'
 
@@ -41,12 +42,8 @@ export const Header = forwardRef<ElementRef<'div'>, HeaderProps>(
                   userName={name}
                   userPhotoUrl={userPhotoUrl}
                 />
-                <Button className={s.button} icon={HiOutlineUser}>
-                  children
-                </Button>
-                <Button className={s.button} icon={FiLogOut}>
-                  Sign Out
-                </Button>
+                <DropDownItem icon={HiOutlineUser}>children</DropDownItem>
+                <DropDownItem icon={FiLogOut}>Sign Out</DropDownItem>
               </DropDownMenu>
             </div>
           </>

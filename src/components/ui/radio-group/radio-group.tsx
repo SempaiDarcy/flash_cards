@@ -3,7 +3,7 @@ import { ComponentPropsWithoutRef, ElementRef, forwardRef } from 'react'
 import { Typography } from '@/components'
 import * as RadixRadioGroup from '@radix-ui/react-radio-group'
 
-import s from './radioGroup.module.scss'
+import s from './radio-group.module.scss'
 
 type Item = {
   disabled?: boolean

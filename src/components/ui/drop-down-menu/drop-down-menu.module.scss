@@ -32,7 +32,7 @@
   animation-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.popoverItemContainer {
+.dropDownItem {
   cursor: pointer;
 
   position: relative;
@@ -77,6 +77,10 @@
 
   &:focus {
     outline: none;
+  }
+
+  .typography {
+    font-size: 1.6rem;
   }
 }
 
