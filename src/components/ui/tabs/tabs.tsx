@@ -18,7 +18,9 @@ export const Tabs = forwardRef<ElementRef<typeof RadixTabs.Root>, TabsProps>(
             {label}
           </Typography>
         )}
-        <RadixTabs.List loop>{children}</RadixTabs.List>
+        <RadixTabs.List className={s.tabsList} loop>
+          {children}
+        </RadixTabs.List>
       </RadixTabs.Root>
     )
   }
