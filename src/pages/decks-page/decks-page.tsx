@@ -1,6 +1,6 @@
 import { useState } from 'react'
 
-import { Pagination, Typography } from '@/components'
+import { Page, Pagination, Typography } from '@/components'
 import { DecksTable } from '@/features'
 import { useCreateNewDeckMutation, useGetDecksQuery } from '@/features/decks/api/decks-api'
 import { DecksPageHeader } from '@/pages/decks-page/decks-page-header/decks-page-header'
@@ -26,13 +26,15 @@ export const DecksPage = () => {
 
   return (
     <>
-      <DecksPageHeader createDeck={createDeck} />
-      <DecksTable data={data} />
-      <Pagination
-        count={data?.pagination?.totalPages}
-        onChange={setCurrentPage}
-        page={currentPage}
-      />
+      <Page>
+        <DecksPageHeader createDeck={createDeck} />
+        <DecksTable data={data} />
+        <Pagination
+          count={data?.pagination?.totalPages}
+          onChange={setCurrentPage}
+          page={currentPage}
+        />
+      </Page>
     </>
   )
 }

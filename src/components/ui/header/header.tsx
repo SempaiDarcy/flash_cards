@@ -26,30 +26,32 @@ export type HeaderProps = {
 export const Header = forwardRef<ElementRef<'div'>, HeaderProps>(
   ({ avatar = userPhotoUrl, email = 'j&johnson@gmail.com', isLoggedIn, name = 'Ivan' }, ref) => {
     return (
-      <header className={s.headerBody} ref={ref}>
-        <Logo className={s.headerLogo} />
-        {isLoggedIn ? (
-          <>
-            <div className={s.userProfile}>
-              <div>
-                <Typography className={s.userName} variant={'h1'}>
-                  {name}
-                </Typography>
+      <header className={s.root} ref={ref}>
+        <div className={s.headerBody}>
+          <Logo className={s.headerLogo} />
+          {isLoggedIn ? (
+            <>
+              <div className={s.userProfile}>
+                <div>
+                  <Typography className={s.userName} variant={'h1'}>
+                    {name}
+                  </Typography>
+                </div>
+                <DropDownMenu trigger={<ProfileIcon userPhotoUrl={avatar} />}>
+                  <DropDownMenuProfileInfo
+                    userEmail={email}
+                    userName={name}
+                    userPhotoUrl={userPhotoUrl}
+                  />
+                  <DropDownItem icon={HiOutlineUser}>children</DropDownItem>
+                  <DropDownItem icon={FiLogOut}>Sign Out</DropDownItem>
+                </DropDownMenu>
               </div>
-              <DropDownMenu trigger={<ProfileIcon userPhotoUrl={avatar} />}>
-                <DropDownMenuProfileInfo
-                  userEmail={email}
-                  userName={name}
-                  userPhotoUrl={userPhotoUrl}
-                />
-                <DropDownItem icon={HiOutlineUser}>children</DropDownItem>
-                <DropDownItem icon={FiLogOut}>Sign Out</DropDownItem>
-              </DropDownMenu>
-            </div>
-          </>
-        ) : (
-          <Button>Sign In</Button>
-        )}
+            </>
+          ) : (
+            <Button>Sign In</Button>
+          )}
+        </div>
       </header>
     )
   }

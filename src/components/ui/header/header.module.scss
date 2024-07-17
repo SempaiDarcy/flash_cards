@@ -1,13 +1,14 @@
-.headerBody {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+@import '@/styles/mixins';
 
-  width: 100%;
-  height: 6rem;
-  padding: 0 13.6rem;
-
+.root {
   background-color: var(--color-dark-700);
+}
+
+.headerBody {
+  @include container;
+  @include flex($justify: space-between, $align: center);
+
+  height: 6rem;
 }
 
 .headerLogo {
