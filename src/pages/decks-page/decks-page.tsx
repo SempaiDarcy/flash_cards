@@ -1,9 +1,8 @@
 import { useState } from 'react'
 
 import { DecksFilter, Page, Pagination, Typography } from '@/components'
-import { DecksTable } from '@/features'
-import { useCreateNewDeckMutation, useGetDecksQuery } from '@/features/decks/api/decks-api'
-import { DecksPageHeader } from '@/pages/decks-page/decks-page-header/decks-page-header'
+import { DecksTable, useCreateNewDeckMutation, useGetDecksQuery } from '@/features'
+import { DecksPageHeader } from '@/pages'
 
 export const DecksPage = () => {
   const [currentPage, setCurrentPage] = useState<number>(1)
