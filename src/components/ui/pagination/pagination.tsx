@@ -162,14 +162,14 @@ export const PerPageSelect = ({ onPerPageChange, perPage, perPageOptions }: PerP
 
   return (
     <div className={s.selectBox}>
-      Show
+      Показать
       <Select
         className={s.select}
         onValueChange={onPerPageChangeHandler}
         selectOptions={selectOptions}
         value={selectPerPage}
       />
-      on page
+      на странице
     </div>
   )
 }

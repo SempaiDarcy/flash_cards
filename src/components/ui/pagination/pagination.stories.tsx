@@ -4,6 +4,8 @@ import { useState } from 'react'
 
 import { Pagination } from '@/components'
 
+import s from './pagination.module.scss'
+
 const meta = {
   component: Pagination,
   tags: ['autodocs'],
@@ -27,7 +29,7 @@ export const Default = () => {
   const TOTAL_PAGES_COUNT = 10
 
   return (
-    <div>
+    <>
       <Pagination
         count={TOTAL_PAGES_COUNT}
         onChange={setPage}
@@ -36,8 +38,10 @@ export const Default = () => {
         perPage={perPage}
         perPageOptions={[5, 8, 12, 100]}
       />
-      <div>Current page: {page}</div>
-      <div>Per page: {perPage}</div>
-    </div>
+      <div className={s.info}>
+        <div>Current page: {page}</div>
+        <div>Per page: {perPage}</div>
+      </div>
+    </>
   )
 }

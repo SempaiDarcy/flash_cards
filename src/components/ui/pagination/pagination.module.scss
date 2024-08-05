@@ -63,9 +63,12 @@
 
 .selectBox {
   display: flex;
-  gap: 12px;
+  gap: 1.2rem;
   align-items: center;
 
+  padding-left: 2.4rem;
+
+  font-size: 1.4rem;
   color: var(--color-text-primary);
   white-space: nowrap;
 }
@@ -74,4 +77,9 @@
   flex-shrink: 0;
   width: 4.5rem;
   margin-right: 10px;
+}
+
+.info {
+  padding-top: 1rem;
+  font-size: 1.4rem;
 }
