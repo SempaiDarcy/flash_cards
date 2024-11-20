@@ -9,7 +9,7 @@ import s from './slider.module.scss'
 export type SliderProps = { label: string } & ComponentPropsWithoutRef<typeof RadixSlider.Root>
 
 export const Slider = forwardRef<ElementRef<typeof RadixSlider.Root>, SliderProps>(
-  ({ className, label, ...restProps }, ref): JSX.Element => {
+  ({ className, label, ...restProps }, ref) => {
     const sliderClasses = clsx(s.root, className)
 
     return (

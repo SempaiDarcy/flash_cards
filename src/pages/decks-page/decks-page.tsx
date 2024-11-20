@@ -1,14 +1,14 @@
 import { useState } from 'react'
 
-import { Pagination, Typography } from '@/components'
-import { DecksTable } from '@/features'
-import { DecksPageHeader } from '@/pages/decks-page/decks-page-header/decks-page-header'
-import { useCreateNewDeckMutation, useGetDecksQuery } from '@/services/decks.service'
+import { DecksFilter, Page, Pagination, Typography } from '@/components'
+import { DecksTable, useCreateNewDeckMutation, useGetDecksQuery } from '@/features'
+import { DecksPageHeader } from '@/pages'
 
 export const DecksPage = () => {
   const [currentPage, setCurrentPage] = useState<number>(1)
   const { data, error, isLoading } = useGetDecksQuery({ currentPage, itemsPerPage: 10 })
   const [createDeck, deckCreationStatus] = useCreateNewDeckMutation()
+  const [perPage, setPerPage] = useState(8)
 
   console.log(deckCreationStatus)
 
@@ -26,13 +26,19 @@ export const DecksPage = () => {
 
   return (
     <>
-      <DecksPageHeader createDeck={createDeck} />
-      <DecksTable data={data} />
-      <Pagination
-        count={data?.pagination?.totalPages}
-        onChange={setCurrentPage}
-        page={currentPage}
-      />
+      <Page>
+        <DecksPageHeader createDeck={createDeck} />
+        <DecksFilter />
+        <DecksTable data={data} />
+        <Pagination
+          count={data?.pagination?.totalPages}
+          onChange={setCurrentPage}
+          onPerPageChange={setPerPage}
+          page={currentPage}
+          perPage={perPage}
+          perPageOptions={[5, 10, 15]}
+        />
+      </Page>
     </>
   )
 }

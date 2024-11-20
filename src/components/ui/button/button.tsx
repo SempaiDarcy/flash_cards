@@ -9,6 +9,7 @@ export type ButtonProps<T extends ElementType = 'button'> = {
   colorIcon?: string
   fullWidth?: boolean
   icon?: IconType
+  iconSize?: number
   variant?: 'link' | 'primary' | 'secondary' | 'tertiary'
 } & ComponentPropsWithoutRef<T>
 
@@ -20,6 +21,7 @@ export const Button = <T extends ElementType = 'button'>(props: ButtonProps<T>) 
     colorIcon,
     fullWidth,
     icon: Icon,
+    iconSize = 18,
     variant = 'primary',
     ...rest
   } = props
@@ -30,7 +32,7 @@ export const Button = <T extends ElementType = 'button'>(props: ButtonProps<T>) 
       {...rest}
     >
       <div className={s.buttonBody}>
-        {Icon && <Icon color={colorIcon} />}
+        {Icon && <Icon color={colorIcon} size={iconSize} />}
         {children}
       </div>
     </Component>

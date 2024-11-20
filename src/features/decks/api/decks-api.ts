@@ -6,7 +6,7 @@ import {
   GetDecksResponse,
 } from '@/services/flashcards.types'
 
-const decksService = baseApi.injectEndpoints({
+const decksApi = baseApi.injectEndpoints({
   endpoints: builder => {
     return {
       createNewDeck: builder.mutation<void, CreateDeckArgs>({
@@ -40,4 +40,4 @@ const decksService = baseApi.injectEndpoints({
   },
 })
 
-export const { useCreateNewDeckMutation, useGetDecksQuery } = decksService
+export const { useCreateNewDeckMutation, useGetDecksQuery } = decksApi

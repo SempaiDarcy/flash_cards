@@ -1,15 +1,14 @@
 import type { Meta, StoryObj } from '@storybook/react'
 
 import userPhotoUrl from '@/assets/img/profile.png'
-import { Button, DropDownMenu, DropDownMenuProfileInfo, ProfileIcon } from '@/components'
+import { DropDownMenu, DropDownMenuProfileInfo, ProfileIcon } from '@/components'
+import { DropDownItem } from '@/components/ui/drop-down-menu/drop-down-item/drop-down-item'
 import { BiEditAlt } from 'react-icons/bi'
 import { CiMenuKebab } from 'react-icons/ci'
 import { FiLogOut } from 'react-icons/fi'
 import { HiOutlineUser } from 'react-icons/hi'
 import { LuPlayCircle } from 'react-icons/lu'
 import { MdOutlineDelete } from 'react-icons/md'
-
-import s from './drop-down-menu.module.scss'
 
 const meta = {
   component: DropDownMenu,
@@ -35,12 +34,8 @@ export const WithProfile: Story = {
           userName={userName}
           userPhotoUrl={userPhotoUrl}
         />
-        <Button className={s.popoverItemContainer} icon={HiOutlineUser}>
-          children
-        </Button>
-        <Button className={s.popoverItemContainer} icon={FiLogOut}>
-          Sign Out
-        </Button>
+        <DropDownItem icon={HiOutlineUser}>children</DropDownItem>
+        <DropDownItem icon={FiLogOut}>Sign Out</DropDownItem>
       </DropDownMenu>
     )
   },
@@ -57,15 +52,9 @@ export const Usual: Story = {
   render: ({ trigger }) => {
     return (
       <DropDownMenu trigger={trigger}>
-        <Button className={s.popoverItemContainer} icon={LuPlayCircle}>
-          Learn
-        </Button>
-        <Button className={s.popoverItemContainer} icon={BiEditAlt}>
-          Edit
-        </Button>
-        <Button className={s.popoverItemContainer} icon={MdOutlineDelete}>
-          Delete
-        </Button>
+        <DropDownItem icon={LuPlayCircle}>Learn</DropDownItem>
+        <DropDownItem icon={BiEditAlt}>Edit</DropDownItem>
+        <DropDownItem icon={MdOutlineDelete}>Delete</DropDownItem>
       </DropDownMenu>
     )
   },

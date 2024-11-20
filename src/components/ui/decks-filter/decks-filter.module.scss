@@ -1,0 +1,15 @@
+.root {
+  display: flex;
+  flex-direction: row;
+  align-items: end;
+  justify-content: space-between;
+}
+
+.decksListInput {
+  width: 29.9rem;
+}
+
+.clearFilterButton {
+  width: 15.4rem;
+  height: 3.6rem;
+}
