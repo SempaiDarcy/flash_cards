@@ -8,6 +8,7 @@ export const DecksPage = () => {
   const [currentPage, setCurrentPage] = useState<number>(1)
   const { data, error, isLoading } = useGetDecksQuery({ currentPage, itemsPerPage: 10 })
   const [createDeck, deckCreationStatus] = useCreateNewDeckMutation()
+  const [perPage, setPerPage] = useState(8)
 
   console.log(deckCreationStatus)
 
@@ -32,7 +33,10 @@ export const DecksPage = () => {
         <Pagination
           count={data?.pagination?.totalPages}
           onChange={setCurrentPage}
+          onPerPageChange={setPerPage}
           page={currentPage}
+          perPage={perPage}
+          perPageOptions={[5, 10, 15]}
         />
       </Page>
     </>
